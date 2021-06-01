@@ -1,0 +1,7 @@
+.playfield {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  width: calc(70%);
+  border: 1px solid red;
+}

@@ -1,0 +1,14 @@
+.header__text {
+  width: calc(60%);
+  text-align: center;
+  margin: 100px auto 0;
+}
+
+.header__text_timer {
+  margin: 20px auto;
+}
+
+.header__text_score {
+  margin: 20px auto;
+  font-weight: normal;
+}
