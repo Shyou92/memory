@@ -1,9 +1,9 @@
 import CardList from '../CardList/CardList';
 
-function Playfield() {
+function Playfield({ store }) {
   return (
     <section className='playfield'>
-      <CardList />
+      <CardList store={store} />
     </section>
   );
 }

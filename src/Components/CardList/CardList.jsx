@@ -1,14 +1,20 @@
-import cardsArray from '../../constants/constants';
+import { connect } from 'react-redux';
 import Card from '../Card/Card';
 
-function CardList() {
+function CardList({ store, cardsArray }) {
   return (
     <div className='cardList'>
       {cardsArray.map((item) => {
-        return <Card key={item.id} card={item} />;
+        return <Card key={item.id} card={item} store={store} />;
       })}
     </div>
   );
 }
 
-export default CardList;
+const mapStateToProps = (state) => {
+  return {
+    cardsArray: state.cardsArrayReducer.cardsArray,
+  };
+};
+
+export default connect(mapStateToProps, null)(CardList);

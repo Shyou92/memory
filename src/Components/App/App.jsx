@@ -1,11 +1,11 @@
 import Header from '../Header/Header';
 import Playfield from '../Playfield/Playfield';
 
-function App() {
+function App({ store }) {
   return (
     <div className='App'>
       <Header />
-      <Playfield />
+      <Playfield store={store} />
     </div>
   );
 }
