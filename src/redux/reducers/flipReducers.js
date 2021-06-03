@@ -6,6 +6,8 @@ import {
 import {
   flippedToClosedInFewSeconds,
   updatePlayfield,
+  increaseScore,
+  decreaseScore,
 } from '../actionCreators';
 import cardsArray from '../../constants/constants';
 import store from '../store';
@@ -31,6 +33,10 @@ function flipReducer(state = initialState, action) {
             if (card.id === newCard.id) {
               card.isVisible = true;
               checkCardArray.push(card);
+              setTimeout(
+                () => flippedToClosedInFewSeconds(false, newCard.id),
+                5000
+              );
             }
 
             if (checkCardArray.length === 2) {
@@ -43,6 +49,7 @@ function flipReducer(state = initialState, action) {
                 });
                 state.cardsArray = newArrayState;
                 checkCardArray.length = 0;
+                store.dispatch(increaseScore(state));
                 return state.cardsArray;
               } else {
                 setTimeout(
@@ -55,6 +62,7 @@ function flipReducer(state = initialState, action) {
                   2000
                 );
                 checkCardArray.length = 0;
+                store.dispatch(decreaseScore(state));
               }
             }
           }
@@ -70,10 +78,10 @@ function flipReducer(state = initialState, action) {
               id: action.payload.id,
               color: card.color,
               isVisible: false,
-              hasEqualColor: card.hasEqualColor,
             };
             if (card.id === newCard.id) {
               card.isVisible = false;
+              checkCardArray.length = 0;
             }
           }
           return card;

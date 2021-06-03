@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import Card from '../Card/Card';
+import shuffle from '../../utils/shuffle';
 
 function CardList({ store, cardsArray }) {
+  shuffle(cardsArray);
   return (
     <div className='cardList'>
       {cardsArray.map((item) => {
