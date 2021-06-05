@@ -97,35 +97,3 @@ export function decreaseScore(scoreState) {
     }, 1000);
   };
 }
-
-export function startTimer() {
-  return setInterval(() => {
-    return {
-      type: START_TIMER,
-      payload: {
-        offset: Date.now(),
-      },
-    };
-  });
-}
-
-export function timerTick() {
-  return (dispatch) => {
-    return setInterval(() => {
-      dispatch({
-        type: TICK,
-        payload: {
-          time: Date.now(),
-        },
-      });
-    });
-  };
-}
-
-export function stopTimer() {
-  return (dispatch) => {
-    return dispatch({
-      type: STOP_TIMER,
-    });
-  };
-}
