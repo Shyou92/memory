@@ -1,4 +1,9 @@
-import { TIMER_IS_ON, START_TIMER, TIMER_IS_OFF } from '../../constants/types';
+import {
+  TIMER_IS_ON,
+  START_TIMER,
+  TIMER_IS_OFF,
+  RESET_RESULTS,
+} from '../../constants/types';
 
 const initialState = {
   time: 0,
@@ -20,6 +25,12 @@ function setTimerReducer(state = initialState, action) {
     case TIMER_IS_OFF:
       return {
         ...state,
+        timerOn: false,
+      };
+    case RESET_RESULTS:
+      return {
+        ...state,
+        time: 0,
         timerOn: false,
       };
     default:

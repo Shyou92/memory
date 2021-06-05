@@ -1,17 +1,26 @@
 import { connect } from 'react-redux';
-import { closeStartScreen } from '../../redux/actionCreators';
+import {
+  closeStartScreen,
+  addPlayerName,
+  startTimer,
+} from '../../redux/actionCreators';
 import store from '../../redux/store';
 
 function StartScreen({ isClosed }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    store.dispatch(addPlayerName(e.target.firstChild.value));
+    return (e.target.firstChild.value = '');
+  }
+
   return (
     <section
       className={`startScreen ${isClosed ? 'startScreen_is-Closed' : ''}`}
     >
       <h1 className='startScreen__text'>Welcome to the Memory game!</h1>
-      <div className='startScreen__container'>
+      <form className='startScreen__container' onSubmit={handleSubmit}>
         <input
           type='text'
-          name=''
           className='startScreen__playerName'
           placeholder='Enter your name'
         />
@@ -19,12 +28,13 @@ function StartScreen({ isClosed }) {
           className='startScreen__play'
           type='submit'
           onClick={() => {
-            store.dispatch(closeStartScreen(true));
+            store.dispatch(closeStartScreen(true)) &&
+              store.dispatch(startTimer(true));
           }}
         >
           Enter
         </button>
-      </div>
+      </form>
     </section>
   );
 }
@@ -32,11 +42,15 @@ function StartScreen({ isClosed }) {
 const mapStateToProps = (state) => {
   return {
     isClosed: state.startScreenReducer.isClosed,
+    name: state.playerReducer.name,
+    timer: state.setTimerReducer.time,
   };
 };
 
 const mapDispatchToProps = {
   closeStartScreen,
+  addPlayerName,
+  startTimer,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StartScreen);

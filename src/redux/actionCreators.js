@@ -11,7 +11,11 @@ import {
   START_TIMER,
   TABLE_IS_OPENED,
   TABLE_IS_CLOSED,
+  STARTSCREEN_IS_OPENED,
   STARTSCREEN_IS_CLOSED,
+  ADD_PLAYER_NAME,
+  RESET_RESULTS,
+  RESET_CARD_ARRAY_STATE,
 } from '../constants/types';
 import store from '../redux/store';
 
@@ -146,11 +150,40 @@ export function closeTable(tableState) {
   };
 }
 
+export function openStartScreen(startScreenState) {
+  return {
+    type: STARTSCREEN_IS_OPENED,
+    payload: {
+      isClosed: startScreenState,
+    },
+  };
+}
+
 export function closeStartScreen(startScreenState) {
   return {
     type: STARTSCREEN_IS_CLOSED,
     payload: {
       isClosed: startScreenState,
+    },
+  };
+}
+
+export function addPlayerName(playerName) {
+  return {
+    type: ADD_PLAYER_NAME,
+    payload: {
+      name: playerName,
+    },
+  };
+}
+
+export function resetResults() {
+  return {
+    type: RESET_RESULTS,
+    payload: {
+      name: '',
+      time: 0,
+      score: 0,
     },
   };
 }

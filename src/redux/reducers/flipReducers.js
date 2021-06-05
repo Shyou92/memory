@@ -1,7 +1,9 @@
 import {
+  INITIAL_STATE,
   FLIP_CARD_TO_OPENED,
   FLIP_CARD_TO_CLOSED,
   UPDATED_PLAYFIELD,
+  RESET_CARD_ARRAY_STATE,
 } from '../../constants/types';
 import {
   flippedToClosedInFewSeconds,

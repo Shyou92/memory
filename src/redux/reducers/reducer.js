@@ -5,6 +5,7 @@ import changeScoreReducer from './changeScoreReducer';
 import setTimerReducer from './timerReducer';
 import standingsReducer from './standingsReducer';
 import startScreenReducer from './startScreenReducer';
+import playerReducer from './playerReducer';
 
 export const rootReducers = combineReducers({
   cardsArrayReducer,
@@ -13,4 +14,5 @@ export const rootReducers = combineReducers({
   standingsReducer,
   startScreenReducer,
   setTimerReducer,
+  playerReducer,
 });
