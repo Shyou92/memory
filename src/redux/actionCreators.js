@@ -6,6 +6,9 @@ import {
   UPDATED_PLAYFIELD,
   INCREASE_SCORE_POINT,
   DECREASE_SCORE_POINT,
+  START_TIMER,
+  TICK,
+  STOP_TIMER,
 } from '../constants/types';
 import store from '../redux/store';
 
@@ -92,5 +95,37 @@ export function decreaseScore(scoreState) {
         },
       });
     }, 1000);
+  };
+}
+
+export function startTimer() {
+  return setInterval(() => {
+    return {
+      type: START_TIMER,
+      payload: {
+        offset: Date.now(),
+      },
+    };
+  });
+}
+
+export function timerTick() {
+  return (dispatch) => {
+    return setInterval(() => {
+      dispatch({
+        type: TICK,
+        payload: {
+          time: Date.now(),
+        },
+      });
+    });
+  };
+}
+
+export function stopTimer() {
+  return (dispatch) => {
+    return dispatch({
+      type: STOP_TIMER,
+    });
   };
 }
