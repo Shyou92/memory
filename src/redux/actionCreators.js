@@ -6,9 +6,12 @@ import {
   UPDATED_PLAYFIELD,
   INCREASE_SCORE_POINT,
   DECREASE_SCORE_POINT,
+  TIMER_IS_ON,
+  TIMER_IS_OFF,
   START_TIMER,
-  TICK,
-  STOP_TIMER,
+  TABLE_IS_OPENED,
+  TABLE_IS_CLOSED,
+  STARTSCREEN_IS_CLOSED,
 } from '../constants/types';
 import store from '../redux/store';
 
@@ -95,5 +98,59 @@ export function decreaseScore(scoreState) {
         },
       });
     }, 1000);
+  };
+}
+
+export function startTimer(timerState) {
+  return {
+    type: TIMER_IS_ON,
+    payload: {
+      timerOn: timerState,
+    },
+  };
+}
+
+export function stopTimer(timerState) {
+  return {
+    type: TIMER_IS_OFF,
+    payload: {
+      timerOn: timerState,
+    },
+  };
+}
+
+export function counterTimer(currentTime) {
+  return {
+    type: START_TIMER,
+    payload: {
+      time: currentTime,
+    },
+  };
+}
+
+export function openTable(tableState) {
+  return {
+    type: TABLE_IS_OPENED,
+    payload: {
+      isOpened: tableState,
+    },
+  };
+}
+
+export function closeTable(tableState) {
+  return {
+    type: TABLE_IS_CLOSED,
+    payload: {
+      isOpened: tableState,
+    },
+  };
+}
+
+export function closeStartScreen(startScreenState) {
+  return {
+    type: STARTSCREEN_IS_CLOSED,
+    payload: {
+      isClosed: startScreenState,
+    },
   };
 }

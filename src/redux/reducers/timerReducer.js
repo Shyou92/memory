@@ -1,30 +1,30 @@
+import { TIMER_IS_ON, START_TIMER, TIMER_IS_OFF } from '../../constants/types';
+
 const initialState = {
-  isOn: false,
   time: 0,
+  timerOn: false,
 };
 
-function timerReducer(state = initialState, action) {
+function setTimerReducer(state = initialState, action) {
   switch (action.type) {
-    case 'START_TIMER':
+    case TIMER_IS_ON:
       return {
         ...state,
-        isOn: true,
-        offSet: action.offSet,
-        interval: action.interval,
+        timerOn: true,
       };
-    case 'STOP_TIMER':
+    case START_TIMER:
       return {
         ...state,
+        time: state.time + 1,
       };
-    case 'TICK':
+    case TIMER_IS_OFF:
       return {
         ...state,
-        time: state.time + (action.time - state.offSet),
-        offSet: action.time,
+        timerOn: false,
       };
     default:
       return state;
   }
 }
 
-export default timerReducer;
+export default setTimerReducer;

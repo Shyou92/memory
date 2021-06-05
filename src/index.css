@@ -3,8 +3,10 @@
 
 @import url(./page.css);
 
+@import url(./Components/StartScreen/StartScreen.css);
 @import url(./Components//Header/Header.css);
 @import url(./Components//Timer/Timer.css);
 @import url(./Components//Playfield/Playfield.css);
 @import url(./Components/CardList/CardList.css);
 @import url(./Components/Card/Card.css);
+@import url(./Components/Standings/Standings.css);

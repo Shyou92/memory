@@ -1,37 +1,45 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import {
+  startTimer,
+  stopTimer,
+  counterTimer,
+} from '../../redux/actionCreators';
+import store from '../../redux/store';
 
-function Timer({ cardsArray }) {
-  const [time, setTime] = useState(0);
-  const [timerOn, setTimerOn] = useState(false);
+function Timer({ cardsArray, timer, timerOn }) {
+  // const [time, setTime] = useState(0);
+  // const [timerOn, setTimerOn] = useState(false);
 
   useEffect(() => {
     let interval = null;
-
     if (timerOn) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
-      }, 10);
+        store.dispatch(counterTimer(timer));
+      }, 1000);
     } else {
       clearInterval(interval);
     }
     return () => {
       clearInterval(interval);
     };
-  }, [timerOn]);
+  }, [timer, timerOn]);
 
   useEffect(() => {
     if (cardsArray.length === 0) {
-      setTimerOn(false);
+      store.dispatch(stopTimer(false));
     }
   }, [cardsArray.length]);
 
   return (
     <>
       <h2 className='header__text header__text_timer'>
-        <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
-        <button className='timer__stopWatch' onClick={() => setTimerOn(true)}>
+        <span>{'0' + Math.floor((timer / 60) % 60)}:</span>
+        <span>{('0' + Math.floor(timer % 60)).slice(-2)}</span>
+        <button
+          className='timer__stopWatch'
+          onClick={() => store.dispatch(startTimer(true))}
+        >
           Start
         </button>
       </h2>
@@ -42,7 +50,15 @@ function Timer({ cardsArray }) {
 const mapStateToProps = (state) => {
   return {
     cardsArray: state.cardsArrayReducer.cardsArray,
+    timer: state.setTimerReducer.time,
+    timerOn: state.setTimerReducer.timerOn,
   };
 };
 
-export default connect(mapStateToProps, null)(Timer);
+const mapDispatchToProps = {
+  startTimer,
+  stopTimer,
+  counterTimer,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer);
