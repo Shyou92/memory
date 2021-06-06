@@ -9,7 +9,11 @@ import store from '../../redux/store';
 function StartScreen({ isClosed }) {
   function handleSubmit(e) {
     e.preventDefault();
-    store.dispatch(addPlayerName(e.target.firstChild.value));
+    if (e.target.firstChild.value !== 0) {
+      store.dispatch(addPlayerName(e.target.firstChild.value));
+    } else {
+      return;
+    }
     return (e.target.firstChild.value = '');
   }
 

@@ -1,10 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {
-  stopTimer,
-  counterTimer,
-  openStartScreen,
-} from '../../redux/actionCreators';
+import { stopTimer, counterTimer } from '../../redux/actionCreators';
 import store from '../../redux/store';
 
 function Timer({ cardsArray, timer, timerOn }) {
@@ -32,30 +28,27 @@ function Timer({ cardsArray, timer, timerOn }) {
       <h2 className='header__text header__text_timer'>
         <span>{'0' + Math.floor((timer / 60) % 60)}:</span>
         <span>{('0' + Math.floor(timer % 60)).slice(-2)}</span>
-        <button
-          className='timer__stopWatch'
-          onClick={() => store.dispatch(openStartScreen(false))}
-        >
-          Restart
-        </button>
       </h2>
     </>
   );
 }
 
 const mapStateToProps = (state) => {
+  const stateCardsArray = state.cardsArrayReducer.cardsArray;
+  const stateTimer = state.setTimerReducer.time;
+  const stateTimerOn = state.setTimerReducer.timerOn;
+  const stateIsClosed = state.startScreenReducer.isClosed;
   return {
-    cardsArray: state.cardsArrayReducer.cardsArray,
-    timer: state.setTimerReducer.time,
-    timerOn: state.setTimerReducer.timerOn,
-    isClosed: state.startScreenReducer.isClosed,
+    cardsArray: stateCardsArray,
+    timer: stateTimer,
+    timerOn: stateTimerOn,
+    isClosed: stateIsClosed,
   };
 };
 
 const mapDispatchToProps = {
   stopTimer,
   counterTimer,
-  openStartScreen,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timer);

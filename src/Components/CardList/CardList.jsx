@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 import Card from '../Card/Card';
-import shuffle from '../../utils/shuffle';
 
 function CardList({ store, cardsArray }) {
-  console.log(cardsArray);
-  shuffle(cardsArray);
   return (
     <div className='cardList'>
       {cardsArray.map((item) => {
@@ -16,8 +13,9 @@ function CardList({ store, cardsArray }) {
 }
 
 const mapStateToProps = (state) => {
+  const stateArray = state.cardsArrayReducer.cardsArray;
   return {
-    cardsArray: state.cardsArrayReducer.cardsArray,
+    cardsArray: stateArray,
   };
 };
 

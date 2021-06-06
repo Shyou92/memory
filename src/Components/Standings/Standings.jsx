@@ -4,7 +4,7 @@ import store from '../../redux/store';
 import {
   openTable,
   closeTable,
-  resetResults,
+  // resetResults,
 } from '../../redux/actionCreators';
 
 function Standings({ cardsArray, isOpened, name, score, timer }) {
@@ -24,8 +24,9 @@ function Standings({ cardsArray, isOpened, name, score, timer }) {
         <button
           className='popup-standings__close'
           type='button'
-          onClick={() =>
-            store.dispatch(closeTable(false)) && store.dispatch(resetResults())
+          onClick={
+            () => store.dispatch(closeTable(false))
+            //  && store.dispatch(resetResults())
           }
         ></button>
         <div className='popup-standings__player'>
@@ -52,7 +53,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   openTable,
   closeTable,
-  resetResults,
+  // resetResults,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Standings);

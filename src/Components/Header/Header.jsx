@@ -14,8 +14,9 @@ function Header({ score }) {
 }
 
 const mapStateToProps = (state) => {
+  const stateScore = state.changeScoreReducer.score;
   return {
-    score: state.changeScoreReducer.score,
+    score: stateScore,
   };
 };
 

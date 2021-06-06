@@ -1,7 +1,6 @@
 import {
   INCREASE_SCORE_POINT,
   DECREASE_SCORE_POINT,
-  RESET_RESULTS,
 } from '../../constants/types';
 
 const initialState = {
@@ -19,11 +18,6 @@ function changeScoreReducer(state = initialState, action) {
       return {
         ...state,
         score: state.score - 5,
-      };
-    case RESET_RESULTS:
-      return {
-        ...state,
-        score: 0,
       };
     default:
       return state;

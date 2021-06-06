@@ -28,10 +28,11 @@ function Card({ store, card }) {
 }
 
 const mapStateToProps = (state) => {
+  const stateCardArray = state.cardsArrayReducer.cardsArray.map((item) => {
+    return item;
+  });
   return {
-    cardsArrayFromState: state.flipReducer.cardsArray.map((item) => {
-      return item;
-    }),
+    cardsArrayFromState: stateCardArray,
   };
 };
 

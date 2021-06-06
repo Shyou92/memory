@@ -1,6 +1,4 @@
-import cardsArray from '../constants/constants';
 import {
-  INITIAL_STATE,
   FLIP_CARD_TO_CLOSED,
   FLIP_CARD_TO_OPENED,
   FLIP_CARD_ADD_TO_CHECK,
@@ -15,19 +13,17 @@ import {
   STARTSCREEN_IS_OPENED,
   STARTSCREEN_IS_CLOSED,
   ADD_PLAYER_NAME,
-  RESET_RESULTS,
-  RESET_CARD_ARRAY_STATE,
 } from '../constants/types';
 import store from '../redux/store';
 
-export function initialCardsArray(cardsArray) {
-  return {
-    type: INITIAL_STATE,
-    payload: {
-      cardsArray,
-    },
-  };
-}
+// export function initialCardsArray(cardsArray) {
+//   return {
+//     type: INITIAL_STATE,
+//     payload: {
+//       cardsArray,
+//     },
+//   };
+// }
 
 export function flippedToOpened(isVisibleState, cardId) {
   return {
@@ -177,14 +173,14 @@ export function addPlayerName(playerName) {
   };
 }
 
-export function resetResults() {
-  return {
-    type: RESET_RESULTS,
-    payload: {
-      name: '',
-      time: 0,
-      score: 0,
-      cardsArray: console.log(cardsArray),
-    },
-  };
-}
+// export function resetResults() {
+//   return {
+//     type: RESET_RESULTS,
+//     payload: {
+//       name: '',
+//       time: 0,
+//       score: 0,
+//       cardsArray: console.log(cardsArray),
+//     },
+//   };
+// }

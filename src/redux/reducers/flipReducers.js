@@ -1,9 +1,7 @@
 import {
-  INITIAL_STATE,
   FLIP_CARD_TO_OPENED,
   FLIP_CARD_TO_CLOSED,
   UPDATED_PLAYFIELD,
-  RESET_CARD_ARRAY_STATE,
 } from '../../constants/types';
 import {
   flippedToClosedInFewSeconds,
@@ -35,10 +33,6 @@ function flipReducer(state = initialState, action) {
             if (card.id === newCard.id) {
               card.isVisible = true;
               checkCardArray.push(card);
-              setTimeout(
-                () => flippedToClosedInFewSeconds(false, newCard.id),
-                5000
-              );
             }
 
             if (checkCardArray.length === 2) {
@@ -47,8 +41,8 @@ function flipReducer(state = initialState, action) {
                   if (item.isVisible !== true) {
                     return item;
                   }
-                  store.dispatch(updatePlayfield(item));
                 });
+                store.dispatch(updatePlayfield(newArrayState));
                 state.cardsArray = newArrayState;
                 checkCardArray.length = 0;
                 store.dispatch(increaseScore(state));
