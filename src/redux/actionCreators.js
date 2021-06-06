@@ -1,3 +1,4 @@
+import cardsArray from '../constants/constants';
 import {
   INITIAL_STATE,
   FLIP_CARD_TO_CLOSED,
@@ -19,12 +20,11 @@ import {
 } from '../constants/types';
 import store from '../redux/store';
 
-export function initialCardsArray(isVisibleState, cardId) {
+export function initialCardsArray(cardsArray) {
   return {
     type: INITIAL_STATE,
     payload: {
-      id: cardId,
-      isVisible: isVisibleState,
+      cardsArray,
     },
   };
 }
@@ -184,6 +184,7 @@ export function resetResults() {
       name: '',
       time: 0,
       score: 0,
+      cardsArray: console.log(cardsArray),
     },
   };
 }

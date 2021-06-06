@@ -59,6 +59,7 @@ function flipReducer(state = initialState, action) {
                     state.cardsArray.map((item) => {
                       if (item.isVisible === true) {
                         flippedToClosedInFewSeconds(false, item.id);
+                        item.isVisible = false;
                       }
                     }),
                   2000

@@ -4,17 +4,10 @@ import {
   stopTimer,
   counterTimer,
   openStartScreen,
-  initialCardsArray,
 } from '../../redux/actionCreators';
 import store from '../../redux/store';
 
-function Timer({
-  cardsArray,
-  timer,
-  timerOn,
-  initialCardsArray,
-  cardsArrayFromState,
-}) {
+function Timer({ cardsArray, timer, timerOn }) {
   useEffect(() => {
     let interval = null;
     if (timerOn) {
@@ -63,7 +56,6 @@ const mapDispatchToProps = {
   stopTimer,
   counterTimer,
   openStartScreen,
-  initialCardsArray,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timer);

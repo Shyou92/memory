@@ -3,10 +3,12 @@ import Card from '../Card/Card';
 import shuffle from '../../utils/shuffle';
 
 function CardList({ store, cardsArray }) {
+  console.log(cardsArray);
   shuffle(cardsArray);
   return (
     <div className='cardList'>
       {cardsArray.map((item) => {
+        item.isVisible = false;
         return <Card key={item.id} card={item} store={store} />;
       })}
     </div>
