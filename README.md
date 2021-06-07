@@ -8,4 +8,6 @@ Set of rules.
 - The game has a score counter. If you select two cards of equal colors you will gain 10 points. And if colors are different you lose 5 points.
 - The game is considered to be over when all of the tiles are opened.
 
+You can try this app here: https://ltkmn.csb.app/
+
 Hope you enjoy!
