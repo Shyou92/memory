@@ -4,10 +4,10 @@ import store from '../../redux/store';
 import {
   openTable,
   closeTable,
-  // resetResults,
+  increasePlayerNumberPosition,
 } from '../../redux/actionCreators';
 
-function Standings({ cardsArray, isOpened, name, score, timer }) {
+function Standings({ cardsArray, isOpened, name, score, timer, number }) {
   useEffect(() => {
     if (cardsArray.length === 0) {
       store.dispatch(openTable(true));
@@ -24,13 +24,13 @@ function Standings({ cardsArray, isOpened, name, score, timer }) {
         <button
           className='popup-standings__close'
           type='button'
-          onClick={
-            () => store.dispatch(closeTable(false))
-            //  && store.dispatch(resetResults())
+          onClick={() =>
+            store.dispatch(closeTable(false)) &&
+            store.dispatch(increasePlayerNumberPosition(1))
           }
         ></button>
         <div className='popup-standings__player'>
-          <div className='popup-standings__position'>1</div>
+          <div className='popup-standings__position'>{number}</div>
           <div className='popup-standings__name'>{name}</div>
           <div className='popup-standings__time'>{timer}</div>
           <div className='popup-standings__score'>{score}</div>
@@ -47,13 +47,14 @@ const mapStateToProps = (state) => {
     name: state.playerReducer.name,
     score: state.changeScoreReducer.score,
     timer: state.setTimerReducer.time,
+    number: state.positionReducer.number,
   };
 };
 
 const mapDispatchToProps = {
   openTable,
   closeTable,
-  // resetResults,
+  increasePlayerNumberPosition,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Standings);

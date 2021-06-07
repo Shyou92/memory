@@ -34,6 +34,10 @@ function flipReducer(state = initialState, action) {
               card.isVisible = true;
               checkCardArray.push(card);
             }
+            setTimeout(
+              () => flippedToClosedInFewSeconds(false, newCard.id),
+              5000
+            );
 
             if (checkCardArray.length === 2) {
               if (checkCardArray[0].color === checkCardArray[1].color) {

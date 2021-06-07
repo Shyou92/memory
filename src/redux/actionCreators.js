@@ -13,17 +13,9 @@ import {
   STARTSCREEN_IS_OPENED,
   STARTSCREEN_IS_CLOSED,
   ADD_PLAYER_NAME,
+  INCREASE_PLAYER_NUMBER,
 } from '../constants/types';
 import store from '../redux/store';
-
-// export function initialCardsArray(cardsArray) {
-//   return {
-//     type: INITIAL_STATE,
-//     payload: {
-//       cardsArray,
-//     },
-//   };
-// }
 
 export function flippedToOpened(isVisibleState, cardId) {
   return {
@@ -173,14 +165,11 @@ export function addPlayerName(playerName) {
   };
 }
 
-// export function resetResults() {
-//   return {
-//     type: RESET_RESULTS,
-//     payload: {
-//       name: '',
-//       time: 0,
-//       score: 0,
-//       cardsArray: console.log(cardsArray),
-//     },
-//   };
-// }
+export function increasePlayerNumberPosition(playerNumber) {
+  return {
+    type: INCREASE_PLAYER_NUMBER,
+    payload: {
+      number: playerNumber,
+    },
+  };
+}

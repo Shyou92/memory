@@ -3,5 +3,8 @@
   margin: auto;
   align-items: center;
   width: calc(70%);
-  border: 1px solid red;
+  min-width: 650px;
+  min-height: 300px;
+  border: 5px solid #b490ca;
+  box-sizing: border-box;
 }

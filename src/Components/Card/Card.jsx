@@ -1,15 +1,7 @@
-import { render } from '@testing-library/react';
 import { connect } from 'react-redux';
 import { flippedToOpened, flippedToClosed } from '../../redux/actionCreators';
 
 function Card({ store, card }) {
-  store.subscribe(render);
-  const unsubscribe = store.subscribe(() =>
-    console.log('State after dispatch: ', store.getState())
-  );
-
-  unsubscribe();
-
   return (
     <div
       className={`card ${card.isVisible ? 'flip' : ''}`}
@@ -20,7 +12,7 @@ function Card({ store, card }) {
       }}
     >
       <div className='flipper'>
-        <div className='frontSide'>{card.id}</div>
+        <div className='frontSide'>Flip me!</div>
         <div className='cover' style={{ background: card.color }}></div>
       </div>
     </div>

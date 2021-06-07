@@ -1,6 +1,6 @@
 .card {
   perspective: 150px;
-  border: 1px solid black;
+  border: 1px solid #5ec7df;
 }
 
 .card.flip .flipper {
